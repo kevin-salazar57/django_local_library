@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -95,15 +96,13 @@ WSGI_APPLICATION = 'BAD.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 # Aqui esta los datos que hacen la conexion a la base de datos que esta en el servidor de MariaDB
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gestionbibliotecario',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3307',
-    }
+    'default': dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
+        default='postgres://root:3RMUGi5PovIhvE4GCrdtAO0yxzbyhxYH@dpg-ci4hpotgkuvm71el0eo0-a/gestionbibliotecario',
+        conn_max_age=600
+    )
 }
 
 
