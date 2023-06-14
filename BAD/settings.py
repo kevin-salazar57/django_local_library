@@ -140,7 +140,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/BAD/urls.py'
+STATIC_URL = '/BAD/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'apps/templates')]
 
@@ -156,6 +156,6 @@ if not DEBUG:
     EMAIL_HOST_USER = 'bibcentral.ca@gmail.com'
     EMAIL_HOST_PASSWORD = 'gnvzyzkopleycpda'
 
-    STATIC_ROOT = os.path.join(BASE_DIR, 'apps/templates')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
