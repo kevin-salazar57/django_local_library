@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="my-4 text-center">Información del Recurso:</h1>
+    <h1  class="my-4 text-center">
+        <small>{{ object.name }}</small>
+    </h1>
+    <div class="row">
+        <div class="col-12">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Nombre: </strong> {{ object.name }}</li>
+                <li class="list-group-item"><strong>Categoria: </strong>{{ object.categoria.name}}</li>
+                <li class="list-group-item"><strong>Autor o Autores: </strong>{% for objs_autor in object.autor.all %}{{ objs_autor.name}}{{" "}}{{objs_autor.apellido }}{{", "}}{% endfor %}</li>
+                <li class="list-group-item"><strong>Editorial: </strong> {{ object.editorial }}</li>
+                <li class="list-group-item"><strong>Año de Publicación: </strong> {{ object.aniopublicacion }}</li>
+                <li class="list-group-item"><strong>Volumen: </strong> {{ object.volumen }}</li>
+                <li class="list-group-item"><strong>Estado: </strong> {{ object.estado }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="mx-auto" style="margin-top:10px; width: 10%">
+        <div class="col-12">
+                <a href="{% url 'listadoRecursos' %}"><button type="button" class="btn-lg" style="background-color:#417690; border-color: none; color:white;">Volver</button></a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="mx-auto" style="width: 275px;">
+        <h1 class="my-4">
+            <small>Lista de Autores</small>
+        </h1>
+    </div>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class="row">
+    {% if object_list %}
+        <div class="col-12" style="overflow-x: scroll">
+            <table id="tabla-autores" class="table align-middle text-center"  style="width:100%">
+              <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nombre del Autor</th>
+                    <th scope="col">Apellido del Autor</th>
+                    <th scope="col">Pais de nacimiento</th>
+                    <th scope="col">Fecha de Nacimiento</th>
+                    <th scope="col">ver</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for autor in object_list %}
+                <tr>
+                    <td>{{ autor.name }}</td>
+                    <td>{{ autor.apellido }}</td>
+                    <td>
+                        {% for objs_nacionalidad in autor.nacionalidad.all %}
+                            <p>{{ objs_nacionalidad.paisNombre }}</p>
+                        {% endfor %}
+                    </td>                  
+                    <td>{{ autor.fechaNacimiento }}</td>
+                    <td><a href="{% url 'detallesAutores' autor.id %}"><button type="button" class="btn btn-outline-primary btn-sm">Ver</button></a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    {% else %}
+    <div class="col-12">
+    </div>
+    {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="my-4 text-center">Información del Autor:</h1>
+    <h1  class="my-4 text-center">
+        <small>{{ object.name }}</small>
+    </h1>
+    <div class="row">
+        <div class="col-12">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Nombre: </strong> {{ object.name }}</li>
+                <li class="list-group-item"><strong>Apellido: </strong> {{ object.apellido }}</li>
+                <li class="list-group-item"><strong>País de Nacimiento: </strong>{% for objs_nacionalidad in autor.nacionalidad.all %}{{ objs_nacionalidad.paisNombre }}{% endfor %}</li>
+                <li class="list-group-item"><strong>Fecha de Nacimiento: </strong> {{ object.fechaNacimiento }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="mx-auto" style="margin-top:10px; width: 10%">
+        <div class="col-12">
+                <a href="{% url 'listadoAutores' %}"><button type="button" class="btn-lg" style="background-color:#417690; border-color: none; color:white;">Volver</button></a>
+        </div>
+    </div>
+{% endblock %}

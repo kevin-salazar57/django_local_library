@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="mx-auto" style="width: 275px;">
+        <h1 class="my-4">
+            <small>Lista de Recursos</small>
+        </h1>
+    </div>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class="row">
+    {% if object_list %}
+        <div class="col-12" style="overflow-x: scroll">
+            <table id="tabla-recursos" class="table align-middle text-center"  style="width:100%">
+              <thead class="thead-dark align-middle">
+                <tr>
+                    <th scope="col">Nombre del Recurso</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Autor o Autores</th>
+                    <th scope="col">Editorial</th>
+                    <th scope="col">Año de Publicación</th>
+                    <th scope="col">Volumen</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">ver</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for recurso in object_list %}
+                <tr>
+                    <td>{{ recurso.name }}</td>
+                    <td>{{ recurso.categoria.name}}</td>
+                    <td>
+                        {% for objs_autor in recurso.autor.all %}
+                            <p>{{ objs_autor.name }}{{" "}}{{ objs_autor.apellido }}</p>
+                        {% endfor %}
+                    </td> 
+                    <td>{{ recurso.editorial }}</td>                 
+                    <td>{{ recurso.aniopublicacion }}</td>
+                    <td>{{ recurso.volumen }}</td>
+                    <td>{{ recurso.estado }}</td>
+                    <td><a href="{% url 'detalleRecursos' recurso.id %}"><button type="button" class="btn btn-outline-primary btn-sm">Ver</button></a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    {% else %}
+    <div class="col-12">
+    </div>
+    {% endif %}
+    </div>
+{% endblock %}

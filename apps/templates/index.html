@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sidebar Navigation Menu</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  </head>
+  <body id="principal">
+    <div class="navigation">
+      <div class="menuToggle">
+      </div>
+      <ul>
+        <li class="list" style="--clr: #1040df;">
+          <a href="#">
+            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+            <span class="text">Home</span>
+          </a>
+        </li>
+        <li class="list" style="--clr: #af06da80;">
+          <a href="autores/">
+            <span class="icon"><ion-icon name="pencil-outline"></ion-icon></span>
+            <span class="text">Autores</span>
+          </a>
+        </li>
+        <li class="list" style="--clr: #0fc70f;">
+          <a href="recursos/">
+            <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
+            <span class="text">Ver recursos</span>
+          </a>
+        </li>        
+        <li class="list" style="--clr: #3f3742;">
+          <a href="#">
+            <span class="icon"><ion-icon name="alert-circle-outline"></ion-icon></span>
+            <span class="text">Ver más</span>
+          </a>
+        </li>
+        <div class="bottom">
+          <li class="list" style="--clr: #0b5848;">
+            <a href="admin/">
+              <span class="icon"><ion-icon name="log-in-outline"></ion-icon></span>
+              <span class="text">Iniciar sesion</span>
+            </a>
+          </li>
+        </div>
+      </ul>
+    </div>
+
+    <script>
+      const menuToggle = document.querySelector('.menuToggle');
+      const navigation = document.querySelector('.navigation');      
+      menuToggle.onclick = function(){navigation.classList.toggle('open')}
+
+      const list = document.querySelectorAll('.list');
+      function activeLink(){
+        list.forEach((item) =>
+        item.classList.remove('active'));
+        this.classList.add('active');
+      }
+      list.forEach((item) =>
+      item.addEventListener('click',activeLink))
+    </script>   
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  </body>
+</html>
