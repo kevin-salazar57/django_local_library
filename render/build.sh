@@ -4,6 +4,7 @@ set -o errexit
 
 python -m pip install --upgrade pip
 pip install psycopg2
+pip install dj-database-url
 pip3 install -r requirements.txt
 #poetry install
 
