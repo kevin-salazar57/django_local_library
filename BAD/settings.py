@@ -76,8 +76,8 @@ ROOT_URLCONF = 'BAD.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['apps/templates'],
-        'APP_DIRS': True,
+        'DIRS': [],
+        'APP_DIRS': 'apps/templates',
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
